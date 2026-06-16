@@ -179,7 +179,7 @@ module RedmineRefIssues
                 if issue.attributes.key? atr
                   word = issue.attributes[atr].to_s
                 else
-                  issue.custom_field_values.each do |cf|
+                  issue.visible_custom_field_values.each do |cf|
                     word = cf.value if "cf_#{cf.custom_field.id}" == atr || cf.custom_field.name == atr
                   end
                 end
@@ -212,7 +212,7 @@ module RedmineRefIssues
                 if issue.attributes.key? atr
                   sum += issue.attributes[atr].to_f
                 else
-                  issue.custom_field_values.each do |cf|
+                  issue.visible_custom_field_values.each do |cf|
                     sum += cf.value.to_f if "cf_#{cf.custom_field.id}" == atr || cf.custom_field.name == atr
                   end
                 end

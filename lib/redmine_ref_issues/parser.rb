@@ -289,7 +289,7 @@ module RedmineRefIssues
         if issue.attributes.key? atr
           word = issue.attributes[atr]
         else
-          issue.custom_field_values.each do |cf|
+          issue.visible_custom_field_values.each do |cf|
             word = cf.value if "cf_#{cf.custom_field.id}" == atr || cf.custom_field.name == atr
           end
         end

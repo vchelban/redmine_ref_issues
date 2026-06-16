@@ -110,7 +110,7 @@ module RedmineRefIssues
                   tgt_objs = []
                   values.each do |value|
                     tgt_obj = models[filter].find_by attributes[filter] => value
-                    raise "- can not resolve '#{value}' in #{models[filter]}.#{attributes[filter]} " if tgt_obj.nil?
+                    raise "- can not resolve '#{ERB::Util.html_escape value}' in #{models[filter]}.#{attributes[filter]} " if tgt_obj.nil?
 
                     tgt_objs << tgt_obj.id.to_s
                   end
@@ -125,7 +125,7 @@ module RedmineRefIssues
 
               filter_str = filter_set[:filter] + filter_set[:operator] + filter_set[:values].join('|')
               cr_count = 0
-              msg = "- failed add_filter: #{filter_str}<br><br>[FILTER]<br>"
+              msg = "- failed add_filter: #{ERB::Util.html_escape filter_str}<br><br>[FILTER]<br>"
 
               @query.available_filters.each_key do |k|
                 if cr_count >= 5
@@ -272,10 +272,15 @@ module RedmineRefIssues
 
             disp.html_safe
           rescue StandardError, ActiveRecord::RecordInvalid => e
-            msg = +e.to_s
-            if msg[0] != '-'
+            # Our own '-' messages already escape their user-supplied parts and
+            # carry intentional <br> markup. Any other (unexpected) error text
+            # is untrusted and must be escaped before being marked html_safe.
+            if e.to_s[0] == '-'
+              msg = +e.to_s
+            else
+              msg = +ERB::Util.html_escape(e.to_s).to_s
               e.backtrace.each do |backtrace|
-                msg << "<br>#{backtrace}"
+                msg << "<br>#{ERB::Util.html_escape backtrace}"
               end
             end
             raise msg.html_safe

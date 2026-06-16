@@ -31,6 +31,17 @@ class WikiControllerTest < RedmineRefIssues::ControllerTest
     assert_ref_issues_macro
   end
 
+  def test_ref_issues_escapes_unresolved_filter_value_in_error
+    prepare_macro_page '{{ref_issues(-f:project = <script>alert(1)</script>)}}'
+
+    get :show,
+        params: { project_id: 1, id: @page_name }
+
+    assert_response :success
+    assert_not_includes response.body, '<script>alert(1)</script>'
+    assert_includes response.body, '&lt;script&gt;alert(1)&lt;/script&gt;'
+  end
+
   def test_ref_issues_with_query_by_name
     prepare_macro_page '{{ref_issues(-q=Open issues by priority and tracker)}}'
 

@@ -1,6 +1,6 @@
 # Redmine ref_issues macro
 
-[![Run Rubocop](https://github.com/AlphaNodes/redmine_ref_issues/workflows/Run%20Rubocop/badge.svg)](https://github.com/AlphaNodes/redmine_ref_issues/actions?query=workflow%3A%22Run+Rubocop%22) [![Run Brakeman](https://github.com/AlphaNodes/redmine_ref_issues/workflows/Run%20Brakeman/badge.svg)](https://github.com/AlphaNodes/redmine_ref_issues/actions?query=workflow%3A%22Run+Brakeman%22) [![Run Tests](https://github.com/AlphaNodes/redmine_ref_issues/workflows/Tests/badge.svg)](https://github.com/AlphaNodes/redmine_ref_issues/actions?query=workflow%3ATests)
+[![Run Rubocop](https://github.com/alphanodes/redmine_ref_issues/workflows/Run%20Rubocop/badge.svg)](https://github.com/alphanodes/redmine_ref_issues/actions?query=workflow%3A%22Run+Rubocop%22) [![Run Brakeman](https://github.com/alphanodes/redmine_ref_issues/workflows/Run%20Brakeman/badge.svg)](https://github.com/alphanodes/redmine_ref_issues/actions?query=workflow%3A%22Run+Brakeman%22) [![Run Tests](https://github.com/alphanodes/redmine_ref_issues/workflows/Tests/badge.svg)](https://github.com/alphanodes/redmine_ref_issues/actions?query=workflow%3ATests)
 
 ## Features
 

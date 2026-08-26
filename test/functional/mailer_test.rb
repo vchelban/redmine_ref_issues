@@ -105,7 +105,7 @@ class MailerTest < RedmineRefIssues::TestCase
     # The important part is that sorting doesn't cause session errors
   end
 
-  # rubocop:disable Minitest/MultipleAssertions
+  # rubocop:disable-next Minitest/MultipleAssertions
   def test_ref_issues_macro_renders_full_issue_table_in_email
     # This test validates that the ref_issues macro actually renders the full issue table
     # in email context, not just that it doesn't error out. This catches issues like
@@ -171,9 +171,8 @@ class MailerTest < RedmineRefIssues::TestCase
     assert_not text_body.include?('<table'), 'Text part should not contain HTML table tags'
     assert_not text_body.include?('<tr'), 'Text part should not contain HTML tr tags'
   end
-  # rubocop:enable Minitest/MultipleAssertions
 
-  # rubocop:disable Minitest/MultipleAssertions
+  # rubocop:disable-next Minitest/MultipleAssertions
   def test_ref_issues_macro_with_custom_field_in_email
     # This test validates that custom fields work in mailer context
     # Custom fields are a common extension and must work in email rendering
@@ -224,5 +223,4 @@ class MailerTest < RedmineRefIssues::TestCase
     # Check that custom field column header is present
     assert_includes html_body, custom_field.name, 'Email table should include custom field column header'
   end
-  # rubocop:enable Minitest/MultipleAssertions
 end

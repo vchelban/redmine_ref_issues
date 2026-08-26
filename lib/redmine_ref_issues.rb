@@ -16,7 +16,7 @@ module RedmineRefIssues
 
     def additionals_help_items
       [{ title: 'Redmine ref_issues macro',
-         url: 'https://github.com/AlphaNodes/redmine_ref_issues#usage',
+         url: 'https://github.com/alphanodes/redmine_ref_issues#usage',
          id: :ref_issues }]
     end
 

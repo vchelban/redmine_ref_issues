@@ -11,6 +11,11 @@ module RedmineRefIssues
           begin
             parser = RedmineRefIssues::Parser.new obj, args, @project
           rescue StandardError => e
+            if RedmineRefIssues.silence_errors?
+              Rails.logger.error "[redmine_ref_issues] macro parameter error: #{e.message}"
+              return ''.html_safe
+            end
+
             attributes = IssueQuery.available_columns
             msg = <<-TEXT
       - <br>parameter error: #{e}<br>
@@ -272,6 +277,11 @@ module RedmineRefIssues
 
             disp.html_safe
           rescue StandardError, ActiveRecord::RecordInvalid => e
+            if RedmineRefIssues.silence_errors?
+              Rails.logger.error "[redmine_ref_issues] #{e.message}"
+              return ''.html_safe
+            end
+
             # Our own '-' messages already escape their user-supplied parts and
             # carry intentional <br> markup. Any other (unexpected) error text
             # is untrusted and must be escaped before being marked html_safe.

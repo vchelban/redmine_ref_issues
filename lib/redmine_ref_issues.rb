@@ -20,6 +20,10 @@ module RedmineRefIssues
          id: :ref_issues }]
     end
 
+    def silence_errors?
+      Setting.plugin_redmine_ref_issues['silence_errors'].to_s == '1'
+    end
+
     private
 
     def setup

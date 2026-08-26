@@ -1,0 +1,13 @@
+<p>
+  <label>
+    <%= hidden_field_tag 'settings[silence_errors]', '0', id: nil %>
+    <%= check_box_tag 'settings[silence_errors]', '1', @settings['silence_errors'].to_s == '1', id: nil %>
+    <%= l(:label_ref_issues_silence_errors, default: 'Silence errors instead of raising exceptions') %>
+  </label>
+  <br>
+  <em class="info">
+    <%= l(:text_ref_issues_silence_errors_info,
+          default: 'When enabled, errors from the ref_issues macro (invalid parameters, unknown filters, ' \
+                    'query errors, ...) are logged and the macro renders nothing instead of showing an error message.') %>
+  </em>
+</p>

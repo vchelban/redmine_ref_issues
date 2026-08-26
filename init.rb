@@ -11,6 +11,8 @@ Redmine::Plugin.register :redmine_ref_issues do
   author_url 'https://alphanodes.com/'
 
   requires_redmine version_or_higher: '6.1'
+
+  settings default: loader.default_settings, partial: 'settings/ref_issues_settings'
 end
 
 RedminePluginKit::Loader.persisting { loader.load_model_hooks! }

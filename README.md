@@ -37,6 +37,14 @@ This is a fork of [redmine_wiki_lists](https://github.com/tkusukawa/redmine_wiki
 
 2. Restart your Redmine application server.
 
+## Settings
+
+The plugin has an admin settings page (*Administration > Plugins > Configure*) with one option:
+
+- **Silence errors instead of raising exceptions**: when enabled, errors raised by the `ref_issues` macro
+  (invalid parameters, unknown filters, query errors, ...) are logged to the Rails log and the macro renders
+  nothing, instead of showing an error message on the page. Disabled by default.
+
 ## Usage
 
 Syntax
